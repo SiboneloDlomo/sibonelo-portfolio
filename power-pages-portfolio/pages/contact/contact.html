@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sibonelo Dlomo - Junior Power Automation Specialist</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #faf9f8;
+            margin: 0;
+            padding: 70px 20px 60px;
+            color: #323130;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo { font-weight: 600; color: #0078d4; text-decoration: none; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: #605e5c; text-decoration: none; }
+        .nav-links a.active { color: #0078d4; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: #0078d4; margin-bottom: 10px; }
+        .subtitle { color: #605e5c; margin-bottom: 30px; }
+        .contact-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #edebe9;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group textarea { height: 150px; resize: vertical; }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0078d4;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #0078d4;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn:hover { background: #106ebe; }
+        .contact-info {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #faf9f8;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .contact-icon { font-size: 2rem; }
+        .contact-details h3 { margin: 0 0 5px 0; color: #323130; }
+        .contact-details p { margin: 0; color: #605e5c; }
+        .contact-details a { color: #0078d4; text-decoration: none; }
+        .footer {
+            background: #323130;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/pages/home/home.html" class="logo">⚡ Sibonelo Dlomo</a>
+        <div class="nav-links">
+            <a href="/pages/home/home.html">Home</a>
+            <a href="/pages/flows/flows.html">Automations</a>
+            <a href="/pages/skills/skills.html">Skills</a>
+            <a href="/pages/demo/demo.html">Demo</a>
+            <a href="#" class="active">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Get In Touch</h1>
+        <p class="subtitle">Ready to discuss your automation needs? Let's connect!</p>
+        
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="Tell me about your automation needs..."></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            
+            <div class="contact-card">
+                <span class="contact-icon">👤</span>
+                <div class="contact-details">
+                    <h3>Sibonelo Dlomo</h3>
+                    <p>Junior Power Automation Specialist</p>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <span class="contact-icon">📧</span>
+                <div class="contact-details">
+                    <h3>Email</h3>
+                    <p><a href="mailto:Sbonelodlomo86@gmail.com">Sbonelodlomo86@gmail.com</a></p>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <span class="contact-icon">📱</span>
+                <div class="contact-details">
+                    <h3>Phone</h3>
+                    <p><a href="tel:0607976520">060 797 6520</a></p>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <span class="contact-icon">💼</span>
+                <div class="contact-details">
+                    <h3>LinkedIn</h3>
+                    <p><a href="#">linkedin.com/in/sibonelodlomo</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Sibonelo Dlomo. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! In production, this would create a record in Dataverse and send a notification.');
+        });
+    </script>
+</body>
+</html>
