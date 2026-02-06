@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Gallery | Sibonelo Dlomo - Junior Power Automation Specialist</title>
+    <link rel="stylesheet" href="/pages/flows/flows.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/pages/home/home.html" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Power Automation</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/pages/home/home.html">Home</a></li>
+                <li><a href="/pages/flows/flows.html" class="active">Automations</a></li>
+                <li><a href="/pages/skills/skills.html">Skills</a></li>
+                <li><a href="/pages/demo/demo.html">Demo</a></li>
+                <li><a href="/pages/contact/contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Automation Gallery</h1>
+            <p>Power Automate solutions by Sibonelo Dlomo - Junior Power Automation Specialist</p>
+        </div>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search automations...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="email">Email</button>
+                    <button class="filter-btn" data-filter="approval">Approvals</button>
+                    <button class="filter-btn" data-filter="data">Data</button>
+                    <button class="filter-btn" data-filter="rpa">RPA</button>
+                    <button class="filter-btn" data-filter="notification">Notifications</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flows Grid -->
+    <section class="flows-section">
+        <div class="container">
+            <div class="flows-grid" id="flowsGrid">
+                <!-- Flow Card 1: Email Triage -->
+                <div class="flow-card" data-category="email" id="email-triage">
+                    <div class="card-header">
+                        <div class="card-icon">📧</div>
+                        <div class="card-badge medium">Junior Level</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Smart Email Triage</h3>
+                        <p class="card-description">Email classification and routing automation. Implements AI Builder for intelligent email processing.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Automated Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">New Email Arrival</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">~1,500/month</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Connectors</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">Office 365</span>
+                                <span class="connector-tag">Microsoft Teams</span>
+                                <span class="connector-tag">Dataverse</span>
+                                <span class="connector-tag">AI Builder</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">AI Classification</span>
+                            <span class="feature-tag">Lead Creation</span>
+                            <span class="feature-tag">Auto-Reply</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('email-triage')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 2: Document Approval -->
+                <div class="flow-card" data-category="approval" id="document-approval">
+                    <div class="card-header">
+                        <div class="card-icon">📋</div>
+                        <div class="card-badge medium">Beginner</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Multi-Level Document Approval</h3>
+                        <p class="card-description">Document approval workflow practice project. Learning parallel processing and approval actions.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Automated Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">File Created/Modified</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">~500/month</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Connectors</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">SharePoint</span>
+                                <span class="connector-tag">Teams</span>
+                                <span class="connector-tag">Office 365</span>
+                                <span class="connector-tag">Approvals</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">Parallel Approvals</span>
+                            <span class="feature-tag">Sequential Stages</span>
+                            <span class="feature-tag">Audit Trail</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('document-approval')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 3: Data Sync -->
+                <div class="flow-card" data-category="data" id="data-sync">
+                    <div class="card-header">
+                        <div class="card-icon">🔄</div>
+                        <div class="card-badge medium">Learning</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Scheduled Data Sync & Health Check</h3>
+                        <p class="card-description">Practice project for scheduled flows and error handling across different data sources.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Scheduled Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Schedule:</span>
+                                <span class="detail-value">Every 4 Hours</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">~180/month</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Connectors</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">Dataverse</span>
+                                <span class="connector-tag">SQL Server</span>
+                                <span class="connector-tag">Azure Blob</span>
+                                <span class="connector-tag">Teams</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">Batch Operations</span>
+                            <span class="feature-tag">Health Monitor</span>
+                            <span class="feature-tag">Error Logging</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('data-sync')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 4: Teams Notifications -->
+                <div class="flow-card" data-category="notification" id="teams-notification">
+                    <div class="card-header">
+                        <div class="card-icon">💬</div>
+                        <div class="card-badge basic">Junior Level</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Adaptive Card Notification System</h3>
+                        <p class="card-description">Teams notifications using adaptive cards for alerts, approvals, reminders, and announcements.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Instant Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">Manual / Button</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">On Demand</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Connectors</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">Microsoft Teams</span>
+                                <span class="connector-tag">Office 365</span>
+                                <span class="connector-tag">Dataverse</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">Adaptive Cards</span>
+                            <span class="feature-tag">5 Card Types</span>
+                            <span class="feature-tag">Action Buttons</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('teams-notification')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 5: Excel Processor RPA -->
+                <div class="flow-card" data-category="rpa" id="excel-processor">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div class="card-badge basic">Junior Level</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Excel Data Processor RPA</h3>
+                        <p class="card-description">Desktop flow for Excel data processing, validation, formatting, and summary generation.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Desktop Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">Manual / Scheduled</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">~100/month</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Applications</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">Excel</span>
+                                <span class="connector-tag">File System</span>
+                                <span class="connector-tag">Email</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">Data Validation</span>
+                            <span class="feature-tag">Auto-Formatting</span>
+                            <span class="feature-tag">Error Logging</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('excel-processor')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 6: PDF Extractor -->
+                <div class="flow-card" data-category="rpa" id="pdf-extractor">
+                    <div class="card-header">
+                        <div class="card-icon">📄</div>
+                        <div class="card-badge basic">Junior Level</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>PDF Data Extractor</h3>
+                        <p class="card-description">Desktop flow for PDF data extraction using OCR and regex patterns for structured documents.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Desktop Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">File Drop</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">~200/month</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Applications</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">PDF Reader</span>
+                                <span class="connector-tag">Excel</span>
+                                <span class="connector-tag">File System</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">OCR Support</span>
+                            <span class="feature-tag">Regex Patterns</span>
+                            <span class="feature-tag">Validation</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('pdf-extractor')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 7: On-Demand Toolkit -->
+                <div class="flow-card" data-category="data" id="on-demand-toolkit">
+                    <div class="card-header">
+                        <div class="card-icon">🛠️</div>
+                        <div class="card-badge basic">Junior Level</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>On-Demand Automation Toolkit</h3>
+                        <p class="card-description">Suite of instant flows for common automation tasks including email digests and reports.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Instant Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">Button Click</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">On Demand</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Connectors</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">Office 365</span>
+                                <span class="connector-tag">Teams</span>
+                                <span class="connector-tag">SharePoint</span>
+                                <span class="connector-tag">Dataverse</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">4 Actions</span>
+                            <span class="feature-tag">Email Digest</span>
+                            <span class="feature-tag">Report Gen</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('on-demand-toolkit')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Flow Card 8: Leave Approval -->
+                <div class="flow-card" data-category="approval" id="leave-approval">
+                    <div class="card-header">
+                        <div class="card-icon">🏖️</div>
+                        <div class="card-badge basic">Junior Level</div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Leave Request Approval</h3>
+                        <p class="card-description">Approval workflow with manager and HR approval stages, balance checking, and calendar sync.</p>
+                        
+                        <div class="card-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">Automated Flow</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Triggers:</span>
+                                <span class="detail-value">SharePoint Item</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Runs:</span>
+                                <span class="detail-value">~300/month</span>
+                            </div>
+                        </div>
+
+                        <div class="card-connectors">
+                            <h4>Connectors</h4>
+                            <div class="connector-list">
+                                <span class="connector-tag">SharePoint</span>
+                                <span class="connector-tag">Office 365</span>
+                                <span class="connector-tag">Approvals</span>
+                                <span class="connector-tag">Calendar</span>
+                            </div>
+                        </div>
+
+                        <div class="card-features">
+                            <span class="feature-tag">2-Level Approval</span>
+                            <span class="feature-tag">Balance Check</span>
+                            <span class="feature-tag">Calendar Sync</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline" onclick="viewFlowDetails('leave-approval')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Flow Details -->
+    <div class="modal" id="flowModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">📧</div>
+                <h2 id="modalTitle">Flow Title</h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="runFlowFromModal()">Run Flow</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sibonelo Dlomo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/pages/flows/flows.js"></script>
+</body>
+</html>

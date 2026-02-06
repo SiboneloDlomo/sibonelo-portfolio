@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demo | Sibonelo Dlomo - Junior Power Automation Specialist</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #faf9f8;
+            margin: 0;
+            padding: 70px 20px 60px;
+            color: #323130;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo { font-weight: 600; color: #0078d4; text-decoration: none; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: #605e5c; text-decoration: none; }
+        .nav-links a.active { color: #0078d4; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #0078d4; }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .demo-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .demo-icon { font-size: 2.5rem; }
+        .demo-title { font-size: 1.3rem; font-weight: 600; margin: 0; }
+        .demo-desc { color: #605e5c; margin-bottom: 15px; font-size: 0.95rem; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0078d4;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .btn:hover { background: #106ebe; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0078d4;
+            color: #0078d4;
+        }
+        .btn-outline:hover { background: #0078d4; color: #fff; }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        .code-section {
+            margin-top: 15px;
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .code-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .code-title { color: #fff; font-size: 0.9rem; }
+        .copy-btn {
+            background: #0078d4;
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .code-block {
+            padding: 15px;
+            margin: 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+            color: #d4d4d4;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        .modal.active { display: block; }
+        .modal-content {
+            background: #fff;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 900px;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .modal-title {
+            font-size: 1.5rem;
+            color: #0078d4;
+            margin-bottom: 20px;
+        }
+        .footer {
+            background: #323130;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #0078d4;
+        }
+        .instructions h3 { margin-top: 0; color: #0078d4; }
+        .instructions ul { margin: 10px 0; padding-left: 20px; }
+        .instructions li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/pages/home/home.html" class="logo">⚡ Sibonelo Dlomo</a>
+        <div class="nav-links">
+            <a href="/pages/home/home.html">Home</a>
+            <a href="/pages/flows/flows.html">Automations</a>
+            <a href="/pages/skills/skills.html">Skills</a>
+            <a href="#" class="active">Demo</a>
+            <a href="/pages/contact/contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Live Demo Dashboard</h1>
+        <p>Interactive automation demonstrations by Sibonelo Dlomo - Junior Power Automation Specialist</p>
+        
+        <div class="instructions">
+            <h3>📋 How to View Flow Details:</h3>
+            <ul>
+                <li><strong>Click "View Code"</strong> to see the actual Power Automate flow JSON structure</li>
+                <li><strong>Click "View Documentation"</strong> to see detailed explanation of triggers, actions, and connectors</li>
+                <li>All flows include error handling, conditions, and best practices</li>
+            </ul>
+        </div>
+        
+        <div class="demo-grid">
+            <!-- Email Triage Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">📧</span>
+                    <h3 class="demo-title">Smart Email Triage</h3>
+                </div>
+                <p class="demo-desc">AI-powered email classification and routing automation using AI Builder and Office 365 connectors.</p>
+                <button class="btn btn-outline" onclick="showModal('email-triage')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('email-triage')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('email-triage')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- Document Approval Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">📋</span>
+                    <h3 class="demo-title">Multi-Level Document Approval</h3>
+                </div>
+                <p class="demo-desc">Document approval workflow with parallel processing and sequential stages.</p>
+                <button class="btn btn-outline" onclick="showModal('document-approval')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('document-approval')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('document-approval')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- Data Sync Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">🔄</span>
+                    <h3 class="demo-title">Scheduled Data Sync & Health Check</h3>
+                </div>
+                <p class="demo-desc">Automated data synchronization across systems with health monitoring and error handling.</p>
+                <button class="btn btn-outline" onclick="showModal('data-sync')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('data-sync')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('data-sync')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- Teams Notification Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">💬</span>
+                    <h3 class="demo-title">Adaptive Card Notification System</h3>
+                </div>
+                <p class="demo-desc">Teams notifications using adaptive cards for alerts, approvals, reminders, and announcements.</p>
+                <button class="btn btn-outline" onclick="showModal('teams-notification')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('teams-notification')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('teams-notification')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- Excel Processor Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">📊</span>
+                    <h3 class="demo-title">Excel Data Processor RPA</h3>
+                </div>
+                <p class="demo-desc">Desktop flow for Excel data processing, validation, formatting, and summary generation.</p>
+                <button class="btn btn-outline" onclick="showModal('excel-processor')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('excel-processor')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('excel-processor')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- PDF Extractor Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">📄</span>
+                    <h3 class="demo-title">PDF Data Extractor</h3>
+                </div>
+                <p class="demo-desc">Desktop flow for PDF data extraction using OCR and regex patterns for structured documents.</p>
+                <button class="btn btn-outline" onclick="showModal('pdf-extractor')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('pdf-extractor')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('pdf-extractor')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- On-Demand Toolkit -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">🛠️</span>
+                    <h3 class="demo-title">On-Demand Automation Toolkit</h3>
+                </div>
+                <p class="demo-desc">Suite of instant flows for common automation tasks including email digests and reports.</p>
+                <button class="btn btn-outline" onclick="showModal('on-demand-toolkit')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('on-demand-toolkit')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('on-demand-toolkit')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+            
+            <!-- Leave Approval Flow -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <span class="demo-icon">🏖️</span>
+                    <h3 class="demo-title">Leave Request Approval</h3>
+                </div>
+                <p class="demo-desc">Approval workflow with manager and HR approval stages, balance checking, and calendar sync.</p>
+                <button class="btn btn-outline" onclick="showModal('leave-approval')">📋 View Code</button>
+                <button class="btn" onclick="showDiagram('leave-approval')">📊 View Flow</button>
+                <button class="btn" onclick="showDocumentation('leave-approval')">📖 Docs</button>
+                <span class="status-badge">✅ On</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Flow Code -->
+    <div class="modal" id="codeModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title" id="modalTitle">Flow Title</h2>
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="code-title">Power Automate Flow JSON</span>
+                    <button class="copy-btn" onclick="copyCode()">📋 Copy</button>
+                </div>
+                <pre class="code-block" id="modalCode"></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Documentation -->
+    <div class="modal" id="docsModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeDocsModal()">&times;</button>
+            <h2 class="modal-title" id="docsModalTitle">Documentation</h2>
+            <div id="docsContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal for Flow Diagram -->
+    <div class="modal" id="diagramModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeDiagramModal()">&times;</button>
+            <h2 class="modal-title" id="diagramModalTitle">Flow Diagram</h2>
+            <img id="diagramImage" src="" alt="Flow Diagram" style="width:100%; border-radius:8px; border:1px solid #edebe9;">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Sibonelo Dlomo. All rights reserved.</p>
+    </div>
+
+    <script>
+        const flowData = {
+            'email-triage': {
+                title: 'Smart Email Triage',
+                json: `{
+  "name": "Smart_Email_Triage",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "When_a_new_email_arrives_(V3)": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "host": {
+            "connectionName": "shared_office365",
+            "operationId": "OnNewEmail",
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+          },
+          "parameters": {
+            "folderPath": "Inbox",
+            "importance": "Any",
+            "fetchOnlyWithAttachment": false,
+            "includeAttachments": false
+          }
+        }
+      }
+    },
+    "actions": {
+      "Classify_email_using_AI_Builder": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "host": {
+            "connectionName": "shared_aibuilder",
+            "operationId": "Predict",
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_aibuilder"
+          },
+          "parameters": {
+            "modelId": "aemailclassificationsample",
+            "emailBody": "@triggerBody()?['Body']",
+            "emailSubject": "@triggerBody()?['Subject']"
+          }
+        }
+      },
+      "Switch_on_email_category": {
+        "type": "Switch",
+        "expression": "@outputs('Classify_email_using_AI_Builder')?['body/prediction']",
+        "cases": {
+          "Case_1": {
+            "case": "Sales",
+            "actions": {
+              "Create_Sales_Lead_in_Dataverse": {
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": { "connectionName": "shared_dataverse", "operationId": "CreateRecord", "apiId": "/providers/Microsoft.PowerApps/apis/shared_dataverse" },
+                  "parameters": { "tableName": "leads", "item": { "subject": "@triggerBody()?['Subject']", "description": "@triggerBody()?['Body']", "emailaddress1": "@triggerBody()?['From']" } }
+                }
+              },
+              "Send_Teams_notification_to_Sales": {
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannel", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" },
+                  "parameters": { "teamId": "sales-team-id", "channelId": "general", "body": "**New Sales Lead:** @triggerBody()?['Subject']" }
+                }
+              }
+            }
+          },
+          "Case_2": {
+            "case": "Support",
+            "actions": {
+              "Create_Support_Ticket": {
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": { "connectionName": "shared_dataverse", "operationId": "CreateRecord", "apiId": "/providers/Microsoft.PowerApps/apis/shared_dataverse" },
+                  "parameters": { "tableName": "incidents", "item": { "title": "@triggerBody()?['Subject']", "description": "@triggerBody()?['Body']" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`,
+                docs: `
+                    <h3>📧 Smart Email Triage Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>This automated flow processes incoming emails and automatically categorizes them using AI Builder for intelligent routing.</p>
+                    
+                    <h4>Triggers</h4>
+                    <ul>
+                        <li><strong>New Email Arrival (V3)</strong> - Triggers when a new email arrives in the Inbox folder</li>
+                        <li>Monitors all emails regardless of importance</li>
+                        <li>Includes attachment detection capability</li>
+                    </ul>
+                    
+                    <h4>Key Actions</h4>
+                    <ol>
+                        <li><strong>AI Builder Classification</strong> - Uses pre-trained AI model to categorize emails</li>
+                        <li><strong>Dataverse Lead Creation</strong> - Creates leads for Sales emails</li>
+                        <li><strong>Teams Notification</strong> - Alerts sales team via Teams channel</li>
+                        <li><strong>Support Ticket Creation</strong> - Creates incidents for Support emails</li>
+                    </ol>
+                    
+                    <h4>Connectors Used</h4>
+                    <ul>
+                        <li>Office 365 Outlook</li>
+                        <li>AI Builder</li>
+                        <li>Microsoft Dataverse</li>
+                        <li>Microsoft Teams</li>
+                    </ul>
+                    
+                    <h4>Error Handling</h4>
+                    <ul>
+                        <li>Try-Catch scope for API failures</li>
+                        <li>Retry policy (exponential backoff)</li>
+                        <li>Failure notification to admin</li>
+                    </ul>
+                `
+            },
+            'document-approval': {
+                title: 'Multi-Level Document Approval',
+                json: `{
+  "name": "Multi_Level_Document_Approval",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "When_a_file_is_created_or_modified_(properties_only)": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "host": { "connectionName": "shared_sharepointonline", "operationId": "WhenFileCreatedOrModifiedProperties", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" },
+          "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/documents", "tableId": "2", "folderId": "Documents Library" }
+        }
+      }
+    },
+    "actions": {
+      "Get_file_properties": {
+        "type": "OpenApiConnection",
+        "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "GetFilePropertiesV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/documents", "id": "@triggerBody()?['ID']" } }
+      },
+      "Start_approval_process": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "host": { "connectionName": "shared_approvals", "operationId": "CreateApproval", "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals" },
+          "parameters": {
+            "approvalType": "PendingApproval",
+            "title": "Document Approval: @triggerBody()?['FileName']",
+            "assignedTo": "manager@company.com",
+            "details": "Document @triggerBody()?['FileName'] requires approval.\\n\\nSubmitted by: @triggerBody()?['Editor']\\nModified: @triggerBody()?['Modified']"
+          }
+        }
+      },
+      "Condition_-_Is_approved": {
+        "type": "Condition",
+        "expression": "@equals(outputs('Start_approval_process')?['body/responseType'], 'Approved')",
+        "actions": {
+          "If_yes_-_Move_to_Approved_folder": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "MoveFileV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/documents", "id": "@triggerBody()?['ID']", "destinationPath": "/Approved" } }
+          },
+          "Send_approval_confirmation": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannel", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "document-team", "channelId": "approvals", "body": "✅ **Document Approved:** @triggerBody()?['FileName']" } }
+          }
+        },
+        "else": {
+          "actions": {
+            "If_no_-_Move_to_Rejected_folder": {
+              "type": "OpenApiConnection",
+              "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "MoveFileV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/documents", "id": "@triggerBody()?['ID']", "destinationPath": "/Rejected" } }
+            },
+            "Send_rejection_notification": {
+              "type": "OpenApiConnection",
+              "inputs": { "host": { "connectionName": "shared_office365", "operationId": "SendEmailV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "to": "@triggerBody()?['Editor/Email']", "subject": "Document Rejected: @triggerBody()?['FileName']", "body": "Your document has been rejected. Please review and resubmit." } }
+            }
+          }
+        }
+      }
+    }
+  }
+}`,
+                docs: `
+                    <h3>📋 Multi-Level Document Approval Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>This automated workflow manages document approval process with parallel processing and sequential stages.</p>
+                    
+                    <h4>Triggers</h4>
+                    <ul>
+                        <li><strong>File Created or Modified</strong> - Monitors SharePoint document library</li>
+                        <li>Captures metadata changes automatically</li>
+                    </ul>
+                    
+                    <h4>Key Actions</h4>
+                    <ol>
+                        <li><strong>Get File Properties</strong> - Retrieves document metadata</li>
+                        <li><strong>Start Approval</strong> - Creates approval request with manager</li>
+                        <li><strong>Condition Check</strong> - Evaluates approval response</li>
+                        <li><strong>File Movement</strong> - Moves file to Approved/Rejected folder</li>
+                        <li><strong>Notifications</strong> - Sends email/Teams notifications</li>
+                    </ol>
+                    
+                    <h4>Connectors Used</h4>
+                    <ul>
+                        <li>SharePoint Online</li>
+                        <li>Approvals</li>
+                        <li>Microsoft Teams</li>
+                        <li>Office 365 Outlook</li>
+                    </ul>
+                `
+            },
+            'data-sync': {
+                title: 'Scheduled Data Sync & Health Check',
+                json: `{
+  "name": "Scheduled_Data_Sync_Health_Check",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Recurrence": {
+        "type": "Recurrence",
+        "recurrence": { "frequency": "Hour", "interval": 4 }
+      }
+    },
+    "actions": {
+      "Scope_-_Try_Sync_Operation": {
+        "type": "Scope",
+        "actions": {
+          "List_records_from_Dataverse": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_dataverse", "operationId": "ListRows", "apiId": "/providers/Microsoft.PowerApps/apis/shared_dataverse" }, "parameters": { "tableName": "accounts", "$top": 1000 } }
+          },
+          "List_records_from_SQL": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_sql", "operationId": "ListRows", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql" }, "parameters": { "tableName": "accounts", "$top": 1000 } }
+          },
+          "For_each_record_-_Compare_and_Update": {
+            "type": "Foreach",
+            "foreach": "@outputs('List_records_from_SQL')?['body/value']",
+            "actions": {
+              "Condition_-_Check_if_update_needed": {
+                "type": "Condition",
+                "expression": "@not(equals(item()?['Modified'], items('List_records_from_Dataverse')?['modifiedon']))",
+                "actions": {
+                  "Update_Dataverse_record": {
+                    "type": "OpenApiConnection",
+                    "inputs": { "host": { "connectionName": "shared_dataverse", "operationId": "UpdateRow", "apiId": "/providers/Microsoft.PowerApps/apis/shared_dataverse" }, "parameters": { "tableName": "accounts", "id": "@items('For_each_record_-_Compare_and_Update')?['accountid']", "item": @{ "modifiedon": "@items('For_each_record_-_Compare_and_Update')?['Modified']" } } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Scope_-_Catch_Any_Errors": {
+        "type": "Scope",
+        "actions": {
+          "Log_error_to_Blob_Storage": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_azureblob", "operationId": "CreateBlob", "apiId": "/providers/Microsoft.PowerApps/apis/shared_azureblob" }, "parameters": { "folderPath": "sync-errors", "name": "@concat(utcNow(), '-error.json')", "body": @{ "error": "@actions('Scope_-_Try_Sync_Operation')?['error']", "timestamp": "@utcNow()" } } }
+          },
+          "Send_alert_to_Teams": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannel", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "operations", "channelId": "monitoring", "body": "⚠️ **Data Sync Alert:** Sync operation failed. Check error log for details." } }
+          }
+        }
+      },
+      "Scope_-_Health_Check": {
+        "type": "Scope",
+        "actions": {
+          "Get_blob_container_properties": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_azureblob", "operationId": "GetContainerProperties", "apiId": "/providers/Microsoft.PowerApps/apis/shared_azureblob" }, "parameters": { "containerName": "sync-status" } }
+          },
+          "Create_health_snapshot": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_azureblob", "operationId": "CreateBlob", "apiId": "/providers/Microsoft.PowerApps/apis/shared_azureblob" }, "parameters": { "folderPath": "health-snapshots", "name": "@concat(utcNow('yyyy-MM-dd'), '-health.json')", "body": @{ "timestamp": "@utcNow()", "status": "Healthy", "recordsProcessed": 150 } } }
+          }
+        }
+      }
+    }
+  }
+}`,
+                docs: `
+                    <h3>🔄 Scheduled Data Sync & Health Check Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>Automated data synchronization across Dataverse and SQL Server with health monitoring and comprehensive error handling.</p>
+                    
+                    <h4>Schedule</h4>
+                    <ul>
+                        <li><strong>Recurrence</strong> - Runs every 4 hours</li>
+                        <li>Adjustable based on business needs</li>
+                    </ul>
+                    
+                    <h4>Key Actions</h4>
+                    <ol>
+                        <li><strong>List Dataverse Records</strong> - Fetches accounts from Dataverse</li>
+                        <li><strong>List SQL Records</strong> - Fetches accounts from SQL Server</li>
+                        <li><strong>Compare and Update</strong> - Synchronizes data with change detection</li>
+                        <li><strong>Error Logging</strong> - Stores errors in Azure Blob Storage</li>
+                        <li><strong>Health Monitoring</strong> - Creates health snapshots</li>
+                    </ol>
+                    
+                    <h4>Connectors Used</h4>
+                    <ul>
+                        <li>Microsoft Dataverse</li>
+                        <li>SQL Server</li>
+                        <li>Azure Blob Storage</li>
+                        <li>Microsoft Teams</li>
+                    </ul>
+                `
+            },
+            'teams-notification': {
+                title: 'Adaptive Card Notification System',
+                json: `{
+  "name": "Adaptive_Card_Notification_System",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Manual_trigger_with_JSON": {
+        "type": "Request",
+        "kind": "Workflow",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "notificationType": { "type": "string", "enum": ["alert", "approval", "reminder", "announcement"] },
+              "title": { "type": "string" },
+              "message": { "type": "string" },
+              "recipient": { "type": "string" },
+              "actionUrl": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Switch_on_notification_type": {
+        "type": "Switch",
+        "expression": "@triggerBody()?['notificationType']",
+        "cases": {
+          "Case_1": {
+            "case": "alert",
+            "actions": {
+              "Create_Alert_Card": {
+                "type": "Compose",
+                "inputs": {
+                  "type": "AdaptiveCard",
+                  "body": [
+                    { "type": "TextBlock", "size": "Large", "weight": "Bolder", "text": "🚨 @triggerBody()?['title']", "wrap": true },
+                    { "type": "FactSet", "facts": [{ "title": "Priority", "value": "High" }, { "title": "Time", "value": "@utcNow()" }] },
+                    { "type": "TextBlock", "text": "@triggerBody()?['message']", "wrap": true }
+                  ],
+                  "actions": [{ "type": "Action.OpenUrl", "title": "View Details", "url": "@triggerBody()?['actionUrl']" }]
+                }
+              },
+              "Send_Alert_to_Teams": {
+                "type": "OpenApiConnection",
+                "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannelV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "operations", "channelId": "alerts", "body": "@outputs('Create_Alert_Card')" } }
+              }
+            }
+          },
+          "Case_2": {
+            "case": "approval",
+            "actions": {
+              "Create_Approval_Card": {
+                "type": "Compose",
+                "inputs": {
+                  "type": "AdaptiveCard",
+                  "body": [
+                    { "type": "TextBlock", "size": "Large", "weight": "Bolder", "text": "✅ @triggerBody()?['title']", "wrap": true },
+                    { "type": "TextBlock", "text": "@triggerBody()?['message']", "wrap": true }
+                  ],
+                  "actions": [
+                    { "type": "Action.Submit", "title": "Approve", "data": { "action": "approve" } },
+                    { "type": "Action.Submit", "title": "Reject", "data": { "action": "reject" } }
+                  ]
+                }
+              },
+              "Send_Approval_Request": {
+                "type": "OpenApiConnection",
+                "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannelV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "approvals", "channelId": "pending", "body": "@outputs('Create_Approval_Card')" } }
+              }
+            }
+          },
+          "Case_3": {
+            "case": "reminder",
+            "actions": {
+              "Create_Reminder_Card": {
+                "type": "Compose",
+                "inputs": {
+                  "type": "AdaptiveCard",
+                  "body": [
+                    { "type": "TextBlock", "size": "Large", "weight": "Bolder", "text": "⏰ @triggerBody()?['title']", "wrap": true },
+                    { "type": "TextBlock", "text": "@triggerBody()?['message']", "wrap": true }
+                  ],
+                  "actions": [{ "type": "Action.OpenUrl", "title": "Complete Task", "url": "@triggerBody()?['actionUrl']" }]
+                }
+              },
+              "Send_Reminder": {
+                "type": "OpenApiConnection",
+                "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannelV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "tasks", "channelId": "reminders", "body": "@outputs('Create_Reminder_Card')" } }
+              }
+            }
+          },
+          "Case_4": {
+            "case": "announcement",
+            "actions": {
+              "Create_Announcement_Card": {
+                "type": "Compose",
+                "inputs": {
+                  "type": "AdaptiveCard",
+                  "body": [
+                    { "type": "TextBlock", "size": "Large", "weight": "Bolder", "text": "📢 @triggerBody()?['title']", "wrap": true },
+                    { "type": "TextBlock", "text": "@triggerBody()?['message']", "wrap": true },
+                    { "type": "Image", "url": "https://example.com/announcement.png", "size": "Large" }
+                  ]
+                }
+              },
+              "Post_Announcement": {
+                "type": "OpenApiConnection",
+                "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannelV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "company-wide", "channelId": "announcements", "body": "@outputs('Create_Announcement_Card')" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`,
+                docs: `
+                    <h3>💬 Adaptive Card Notification System Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>Rich Teams notifications using adaptive cards supporting alerts, approvals, reminders, and announcements.</p>
+                    
+                    <h4>Trigger</h4>
+                    <ul>
+                        <li><strong>Manual Trigger with JSON</strong> - Accepts JSON input for flexible notification types</li>
+                    </ul>
+                    
+                    <h4>Card Types</h4>
+                    <ol>
+                        <li><strong>Alert Card</strong> - High priority notifications with action buttons</li>
+                        <li><strong>Approval Card</strong> - Two-way approval with Approve/Reject actions</li>
+                        <li><strong>Reminder Card</strong> - Task reminders with completion links</li>
+                        <li><strong>Announcement Card</strong> - Company-wide announcements with images</li>
+                    </ol>
+                    
+                    <h4>Connectors Used</h4>
+                    <ul>
+                        <li>Microsoft Teams</li>
+                        <li>Adaptive Cards</li>
+                    </ul>
+                `
+            },
+            'excel-processor': {
+                title: 'Excel Data Processor RPA',
+                json: `{
+  "name": "Excel_Data_Processor_RPA",
+  "type": "DesktopFlow",
+  "definition": {
+    "description": "Automated Excel data processing, validation, formatting, and summary generation",
+    "actions": [
+      {
+        "action": "Excel.Launch",
+        "parameters": { "visible": true, "mode": "Open", "filePath": "C:\\\\Input\\\\Data.xlsx" }
+      },
+      {
+        "action": "Excel.ReadFromFile",
+        "parameters": { "worksheet": "Sheet1", "range": "A1:Z1000" }
+      },
+      {
+        "action": "Excel.GetFirstFreeRow",
+        "parameters": { "worksheet": "Sheet1", "column": "A" }
+      },
+      {
+        "action": "Excel.ApplyFormatting",
+        "parameters": {
+          "range": "A1:Z{FirstFreeRow}",
+          "format": {
+            "headerRow": { "bold": true, "fillColor": "#0078d4" },
+            "dataRows": { "alternateRowColor": "#f3f2f1" },
+            "borders": ["Top", "Bottom", "Left", "Right"]
+          }
+        }
+      },
+      {
+        "action": "VBAScript.Run",
+        "parameters": {
+          "macro": "ValidateAndCalculate",
+          "arguments": ["A2:Z{FirstFreeRow}"]
+        }
+      },
+      {
+        "action": "Excel.WriteToFile",
+        "parameters": {
+          "worksheet": "Summary",
+          "range": "A1:C10",
+          "values": [["Total Records", "Valid Records", "Errors"],
+                    ["=COUNTA(A2:A{FirstFreeRow})", "=COUNTIF(G2:G{FirstFreeRow}, \"Valid\")", "=COUNTIF(G2:G{FirstFreeRow}, \"Error\")"]]
+        }
+      },
+      {
+        "action": "Excel.CreatePivotTable",
+        "parameters": {
+          "sourceRange": "A1:Z{FirstFreeRow}",
+          "destinationSheet": "PivotAnalysis",
+          "rows": ["Category"],
+          "columns": ["Status"],
+          "values": [["Amount", "SUM"]],
+          "filters": ["Region"]
+        }
+      },
+      {
+        "action": "Excel.Save",
+        "parameters": { "path": "C:\\\\Output\\\\Processed_Data.xlsx" }
+      },
+      {
+        "action": "Excel.Close",
+        "parameters": { "saveChanges": true }
+      }
+    ],
+    "errorHandling": {
+      "onError": [
+        { "action": "Log.Error", "message": "Excel processing failed: {Error}" },
+        { "action": "Email.Send", "to": "admin@company.com", "subject": "Excel Processor Error", "body": "Error: {Error}" }
+      ]
+    }
+  }
+}`,
+                docs: `
+                    <h3>📊 Excel Data Processor RPA Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>Desktop flow for Excel data processing, validation, formatting, and summary generation.</p>
+                    
+                    <h4>Actions Performed</h4>
+                    <ol>
+                        <li><strong>Launch Excel</strong> - Opens input file with visible mode</li>
+                        <li><strong>Read Data</strong> - Reads data from worksheet</li>
+                        <li><strong>Apply Formatting</strong> - Formats headers and data rows</li>
+                        <li><strong>Run VBA Script</strong> - Validates and calculates data</li>
+                        <li><strong>Write Summary</strong> - Creates summary statistics</li>
+                        <li><strong>Create Pivot Table</strong> - Generates analysis</li>
+                        <li><strong>Save & Close</strong> - Saves processed file</li>
+                    </ol>
+                    
+                    <h4>Applications Used</h4>
+                    <ul>
+                        <li>Microsoft Excel</li>
+                        <li>VBA Scripting</li>
+                        <li>File System</li>
+                        <li>Email (for error notifications)</li>
+                    </ul>
+                `
+            },
+            'pdf-extractor': {
+                title: 'PDF Data Extractor',
+                json: `{
+  "name": "PDF_Data_Extractor_RPA",
+  "type": "DesktopFlow",
+  "definition": {
+    "description": "Automated PDF data extraction using OCR and regex patterns for structured documents",
+    "actions": [
+      {
+        "action": "Folder.GetFiles",
+        "parameters": { "folder": "C:\\\\Input\\\\PDFs", "filter": "*.pdf" }
+      },
+      {
+        "action": "OCR.Process",
+        "parameters": {
+          "source": "FilePath",
+          "engine": "Tesseract",
+          "language": "eng",
+          "preprocessing": ["Deskew", "RemoveNoise", "Binarize"]
+        }
+      },
+      {
+        "action": "Text.RegexMatch",
+        "parameters": {
+          "text": "{OCRText}",
+          "pattern": "Invoice\\\\s*#?:?\\\\s*([A-Z0-9-]+)",
+          "group": 1
+        }
+      },
+      {
+        "action": "Text.RegexMatch",
+        "parameters": {
+          "text": "{OCRText}",
+          "pattern": "Date:\\\\s*([0-9]{1,2}/[0-9]{1,2}/[0-9]{4})",
+          "group": 1
+        }
+      },
+      {
+        "action": "Text.RegexMatch",
+        "parameters": {
+          "text": "{OCRText}",
+          "pattern": "Total\\\\s*[$€£]?\\\\s*([0-9,]+\\\\.?[0-9]{2})",
+          "group": 1
+        }
+      },
+      {
+        "action": "Excel.Launch",
+        "parameters": { "visible": false, "mode": "Create", "path": "C:\\\\Output\\\\Extracted_Data.xlsx" }
+      },
+      {
+        "action": "Excel.WriteToFile",
+        "parameters": {
+          "worksheet": "Sheet1",
+          "range": "A1:D1",
+          "values": [["InvoiceNumber", "Date", "Total", "SourceFile"]]
+        }
+      },
+      {
+        "action": "Loop.Foreach",
+        "parameters": { "items": "{ExtractedRecords}" },
+        "actions": {
+          "action": "Excel.WriteToFile",
+          "parameters": {
+            "worksheet": "Sheet1",
+            "range": "A{LoopIndex}2:D{LoopIndex}2",
+            "values": [["@Item.InvoiceNumber", "@Item.Date", "@Item.Total", "@Item.SourceFile"]]
+          }
+        }
+      },
+      {
+        "action": "Excel.Save",
+        "parameters": {}
+      },
+      {
+        "action": "Folder.MoveFile",
+        "parameters": {
+          "source": "{FilePath}",
+          "destination": "C:\\\\Processed\\\\{FileName}"
+        }
+      }
+    ],
+    "errorHandling": {
+      "onError": [
+        { "action": "Log.Error", "message": "PDF extraction failed: {Error}" },
+        { "action": "Email.Send", "to": "admin@company.com", "subject": "PDF Extractor Error", "body": "Failed to process: {FilePath}" }
+      ]
+    }
+  }
+}`,
+                docs: `
+                    <h3>📄 PDF Data Extractor Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>Desktop flow for PDF data extraction using OCR and regex patterns for structured documents.</p>
+                    
+                    <h4>Actions Performed</h4>
+                    <ol>
+                        <li><strong>Get PDF Files</strong> - Lists PDF files from input folder</li>
+                        <li><strong>OCR Processing</strong> - Extracts text from PDF using Tesseract OCR</li>
+                        <li><strong>Regex Patterns</strong> - Extracts Invoice #, Date, Total</li>
+                        <li><strong>Create Excel Output</strong> - Writes extracted data to Excel</li>
+                        <li><strong>Move Processed Files</strong> - Archives processed PDFs</li>
+                    </ol>
+                    
+                    <h4>Applications Used</h4>
+                    <ul>
+                        <li>PDF Reader</li>
+                        <li>Tesseract OCR</li>
+                        <li>Microsoft Excel</li>
+                        <li>File System</li>
+                    </ul>
+                    
+                    <h4>Regex Patterns</h4>
+                    <ul>
+                        <li>Invoice #: &lt;code&gt;Invoice\s*#?:?\s*([A-Z0-9-]+)&lt;/code&gt;</li>
+                        <li>Date: &lt;code&gt;Date:\s*([0-9]{1,2}/[0-9]{1,2}/[0-9]{4})&lt;/code&gt;</li>
+                        <li>Total: &lt;code&gt;Total\s*[$€£]?\s*([0-9,]+.?[0-9]{2})&lt;/code&gt;</li>
+                    </ul>
+                `
+            },
+            'on-demand-toolkit': {
+                title: 'On-Demand Automation Toolkit',
+                json: `{
+  "name": "On_Demand_Automation_Toolkit",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": { "type": "Request", "kind": "Button", "inputs": { "schema": { "type": "object", "properties": { "action": { "type": "string", "enum": ["emailDigest", "dataSync", "reportGen", "notification"] } } } } }
+    },
+    "actions": {
+      "Switch_on_action_type": {
+        "type": "Switch",
+        "expression": "@triggerBody()?['action']",
+        "cases": {
+          "Case_1": {
+            "case": "emailDigest",
+            "actions": {
+              "Get_unread_emails": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "GetEmailsV3", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "folderPath": "Inbox", "$top": 10 } } },
+              "Create_digest_summary": { "type": "Compose", "inputs": { "body": "## Email Digest\\n\\n**Unread Messages:** @{length(outputs('Get_unread_emails')?['body/value'])}\\n\\n### Recent Senders:\\n@{join(array(outputs('Get_unread_emails')?['body/value'][*]['From']), '\\n')}" } },
+              "Send_digest_email": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "SendEmailV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "to": "@triggerBody()?['userEmail']", "subject": "Weekly Email Digest", "body": "@outputs('Create_digest_summary')" } } }
+            }
+          },
+          "Case_2": {
+            "case": "dataSync",
+            "actions": {
+              "Trigger_Dataverse_Sync": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_dataverse", "operationId": "SyncData", "apiId": "/providers/Microsoft.PowerApps/apis/shared_dataverse" }, "parameters": { "direction": "Bidirectional" } } },
+              "Notify_completion": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannelV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "data-team", "channelId": "sync", "body": "✅ On-demand data sync completed successfully" } } }
+            }
+          },
+          "Case_3": {
+            "case": "reportGen",
+            "actions": {
+              "Generate_report": { "type": "Compose", "inputs": { "type": "HTML", "content": "<h1>Monthly Report</h1><p>Generated: @{utcNow()}</p>" } },
+              "Create_report_file": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "CreateFileV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "folderPath": "Reports", "name": "@concat('Monthly_Report_', utcNow('yyyy-MM-dd'), '.html')", "body": "@outputs('Generate_report')" } } },
+              "Send_report_link": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "SendEmailV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "to": "@triggerBody()?['userEmail']", "subject": "Your Report is Ready", "body": "Report generated: @{outputs('Create_report_file')?['body/WebUrl']}" } } }
+            }
+          },
+          "Case_4": {
+            "case": "notification",
+            "actions": {
+              "Send_custom_notification": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_teams", "operationId": "PostMessageToChannelV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_teams" }, "parameters": { "teamId": "announcements", "channelId": "general", "body": "@triggerBody()?['message']" } } }
+            }
+          }
+        }
+      }
+    }
+  }
+}`,
+                docs: `
+                    <h3>🛠️ On-Demand Automation Toolkit Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>Suite of instant flows for common automation tasks triggered by button clicks.</p>
+                    
+                    <h4>Available Actions</h4>
+                    <ol>
+                        <li><strong>Email Digest</strong> - Summarizes unread emails and sends digest</li>
+                        <li><strong>Data Sync</strong> - Triggers on-demand Dataverse synchronization</li>
+                        <li><strong>Report Gen</strong> - Generates and shares HTML reports</li>
+                        <li><strong>Notification</strong> - Sends custom Teams messages</li>
+                    </ol>
+                    
+                    <h4>Connectors Used</h4>
+                    <ul>
+                        <li>Office 365 Outlook</li>
+                        <li>Microsoft Dataverse</li>
+                        <li>Microsoft Teams</li>
+                        <li>SharePoint Online</li>
+                    </ul>
+                `
+            },
+            'leave-approval': {
+                title: 'Leave Request Approval',
+                json: `{
+  "name": "Leave_Request_Approval",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "When_an_item_is_created_or_modified": {
+        "type": "OpenApiConnection",
+        "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "WhenItemCreatedOrModified", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/hr", "tableId": "LeaveRequests" } }
+      }
+    },
+    "actions": {
+      "Get_employee_details": {
+        "type": "OpenApiConnection",
+        "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "GetItem", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/hr", "tableId": "Employees", "id": "@triggerBody()?['EmployeeId']" } }
+      },
+      "Check_leave_balance": {
+        "type": "OpenApiConnection",
+        "inputs": { "host": { "connectionName": "shared_dataverse", "operationId": "GetRecord", "apiId": "/providers/Microsoft.PowerApps/apis/shared_dataverse" }, "parameters": { "tableName": "leavebalances", "id": "@triggerBody()?['EmployeeId']" } }
+      },
+      "Condition_-_Sufficient_balance": {
+        "type": "Condition",
+        "expression": "@greaterOrEquals(outputs('Check_leave_balance')?['body/availableDays'], triggerBody()?['RequestedDays'])",
+        "actions": {
+          "Manager_approval": {
+            "type": "OpenApiConnection",
+            "inputs": { "host": { "connectionName": "shared_approvals", "operationId": "CreateApproval", "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals" }, "parameters": { "title": "Leave Request - @{triggerBody()?['EmployeeName']}", "assignedTo": "@outputs('Get_employee_details')?['body/ManagerEmail']", "details": "Leave Type: @{triggerBody()?['LeaveType']}\\nDays: @{triggerBody()?['RequestedDays']}\\nFrom: @{triggerBody()?['StartDate']}\\nTo: @{triggerBody()?['EndDate']}" } }
+          },
+          "Condition_-_Manager_response": {
+            "type": "Condition",
+            "expression": "@equals(outputs('Manager_approval')?['body/responseType'], 'Approved')",
+            "actions": {
+              "Update_status_to_Approved": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "UpdateItem", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/hr", "tableId": "LeaveRequests", "id": "@triggerBody()?['ID']", "item": @{ "Status": "Approved", "ApproverComments": "@outputs('Manager_approval')?['body/responseSummary']" } } } },
+              "Send_approval_email": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "SendEmailV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "to": "@triggerBody()?['Email']", "subject": "Leave Request Approved", "body": "Your leave request has been approved." } } },
+              "Update_calendar": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "CreateCalendarEvent", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "subject": "Leave - @{triggerBody()?['EmployeeName']}", "start": "@triggerBody()?['StartDate']", "end": "@triggerBody()?['EndDate']" } } }
+            },
+            "else": {
+              "actions": {
+                "Update_status_to_Rejected": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "UpdateItem", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/hr", "tableId": "LeaveRequests", "id": "@triggerBody()?['ID']", "item": @{ "Status": "Rejected" } } } },
+                "Send_rejection_email": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "SendEmailV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "to": "@triggerBody()?['Email']", "subject": "Leave Request Rejected", "body": "Your leave request has been rejected." } } }
+              }
+            }
+          }
+        },
+        "else": {
+          "actions": {
+            "Insufficient_balance_notification": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_office365", "operationId": "SendEmailV2", "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365" }, "parameters": { "to": "@triggerBody()?['Email']", "subject": "Leave Request - Insufficient Balance", "body": "You do not have enough leave balance for this request." } } },
+            "Update_status_to_Insufficient": { "type": "OpenApiConnection", "inputs": { "host": { "connectionName": "shared_sharepointonline", "operationId": "UpdateItem", "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline" }, "parameters": { "dataset": "https://yourcompany.sharepoint.com/sites/hr", "tableId": "LeaveRequests", "id": "@triggerBody()?['ID']", "item": @{ "Status": "Insufficient Balance" } } } }
+          }
+        }
+      }
+    }
+  }
+}`,
+                docs: `
+                    <h3>🏖️ Leave Request Approval Flow</h3>
+                    <h4>Flow Overview</h4>
+                    <p>Approval workflow with manager and HR approval stages, balance checking, and calendar sync.</p>
+                    
+                    <h4>Triggers</h4>
+                    <ul>
+                        <li><strong>Item Created or Modified</strong> - Monitors SharePoint Leave Requests list</li>
+                    </ul>
+                    
+                    <h4>Process Steps</h4>
+                    <ol>
+                        <li><strong>Get Employee Details</strong> - Retrieves employee information</li>
+                        <li><strong>Check Leave Balance</strong> - Validates available leave days</li>
+                        <li><strong>Manager Approval</strong> - Sends approval request to manager</li>
+                        <li><strong>Status Update</strong> - Updates SharePoint item status</li>
+                        <li><strong>Calendar Sync</span> - Creates calendar event for approved leave</li>
+                    </ol>
+                    
+                    <h4>Connectors Used</h4>
+                    <ul>
+                        <li>SharePoint Online</li>
+                        <li>Approvals</li>
+                        <li>Office 365 Outlook</li>
+                        <li>Microsoft Dataverse</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showModal(flowId) {
+            const flow = flowData[flowId];
+            document.getElementById('modalTitle').textContent = '📋 ' + flow.title;
+            document.getElementById('modalCode').textContent = flow.json;
+            document.getElementById('codeModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('codeModal').classList.remove('active');
+        }
+
+        function showDocumentation(flowId) {
+            const flow = flowData[flowId];
+            document.getElementById('docsModalTitle').textContent = '📖 ' + flow.title;
+            document.getElementById('docsContent').innerHTML = flow.docs;
+            document.getElementById('docsModal').classList.add('active');
+        }
+
+        function closeDocsModal() {
+            document.getElementById('docsModal').classList.remove('active');
+        }
+
+        function showDiagram(flowId) {
+            const flow = flowData[flowId];
+            document.getElementById('diagramModalTitle').textContent = '📊 ' + flow.title + ' - Flow Diagram';
+            document.getElementById('diagramImage').src = '/webfiles/images/' + flowId + '-flow.svg';
+            document.getElementById('diagramModal').classList.add('active');
+        }
+
+        function closeDiagramModal() {
+            document.getElementById('diagramModal').classList.remove('active');
+        }
+
+        function copyCode() {
+            const code = document.getElementById('modalCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            });
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
